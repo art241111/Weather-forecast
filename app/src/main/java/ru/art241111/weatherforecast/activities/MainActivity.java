@@ -61,13 +61,34 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         initializationView();
 
         requestQueue = Volley.newRequestQueue(context);
+
+        loadingDataFromSharePreferences();
+
+        setListenerOnButtonEnter();
+        setListenerOnEditText();
+    }
+
+
+    private void initializationView() {
+        ib_enter = findViewById(R.id.ib_enter);
+
+        et_city = findViewById(R.id.et_city);
+
+        tv_data = findViewById(R.id.tv_data);
+        tv_temperature = findViewById(R.id.tv_temperature);
+        tv_condition = findViewById(R.id.tv_condition);
+        tv_analysis = findViewById(R.id.tv_analysis);
+
+        iv_poster_weight = findViewById(R.id.iv_poster_weather);
+    }
+
+
+    private void loadingDataFromSharePreferences() {
         sharedPreferences
                 = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-
 
         if(sharedPreferences.contains("city")){
             Weather weather = new Weather();
@@ -83,30 +104,7 @@ public class MainActivity extends AppCompatActivity {
             et_city.setText("Санкт-Петербург");
             getWeather(et_city.getText().toString().trim());
         }
-
-
-        setListenerOnButtonEnter();
-        setListenerOnEditText();
-
-
-
-
-
     }
-
-    private void initializationView() {
-        ib_enter = findViewById(R.id.ib_enter);
-
-        et_city = findViewById(R.id.et_city);
-
-        tv_data = findViewById(R.id.tv_data);
-        tv_temperature = findViewById(R.id.tv_temperature);
-        tv_condition = findViewById(R.id.tv_condition);
-        tv_analysis = findViewById(R.id.tv_analysis);
-
-        iv_poster_weight = findViewById(R.id.iv_poster_weather);
-    }
-
 
     private void setListenerOnEditText() {
         et_city.setOnKeyListener(new View.OnKeyListener()
