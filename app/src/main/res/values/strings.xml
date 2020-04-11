@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Weather Forecast</string>
+
+    <string name="error_write_city">Введите название города по-другому</string>
+    <string name="error_write_id">Введите корректный id города</string>
+    <string name="error_write_coordinate">Координаты введены не корректно</string>
+    <string name="enter_name_city">Введите название города</string>
+</resources>
